@@ -1,0 +1,22 @@
+<Groups>
+  <Group>
+    <GroupId>IS1104</GroupId>
+    <GroupName>IS1104</GroupName>
+  </Group>
+  <Group>
+    <GroupId>IS1105</GroupId>
+    <GroupName>IS1105</GroupName>
+  </Group>
+  <Group>
+    <GroupId>IS1106</GroupId>
+    <GroupName>IS1106</GroupName>
+  </Group>
+  <Group>
+    <GroupId>JS1102</GroupId>
+    <GroupName>JS1102</GroupName>
+  </Group>
+  <Group>
+    <GroupId>JS1103</GroupId>
+    <GroupName>JS1103</GroupName>
+  </Group>
+</Groups>
