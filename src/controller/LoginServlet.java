@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.bind.JAXBException;
 
 import model.dao.AccountDAO;
 import model.entity.account.Account;
+import utility.Constants;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,14 +40,16 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String email = request.getParameter(Constants.HTML_EMAIL);
+		String password = request.getParameter(Constants.HTML_PASSWORD);
 
 		try {
 			String webRoot = getServletContext().getRealPath("");
 			Account account = new AccountDAO(webRoot).checkAccount(email, password);
 			if (account != null) {
-				out.println("Successful");
+				HttpSession session = request.getSession();
+				session.setAttribute(Constants.SESSION_EMAIL, email);
+				out.println("Successful" + session.getAttribute(Constants.SESSION_EMAIL));
 			} else {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Login.jsp");
 				requestDispatcher.include(request, response);
